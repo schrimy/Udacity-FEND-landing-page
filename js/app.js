@@ -18,14 +18,23 @@
  *
 */
 
+const navBar = document.querySelector('#navbar__list');
+const sections = document.querySelectorAll('section');
+
 /**
  * End Global Variables
  * Start Helper Functions
  *
 */
 
-function createNavItems(sections) {
+/**
+ * End Helper Functions
+ * Begin Main Functions
+ *
+*/
 
+// build the nav
+function buildNav() {
   const navFrag = document.createDocumentFragment();
 
   for (const section of sections) {
@@ -36,22 +45,9 @@ function createNavItems(sections) {
     navFrag.appendChild(navItem);
   }
 
-  return navFrag;
+  navBar.appendChild(navFrag);
 
 }
-
-/**
- * End Helper Functions
- * Begin Main Functions
- *
-*/
-
-// build the nav
-const navBar = document.querySelector('#navbar__list');
-const pageSections = document.querySelectorAll('section');
-
-const navContent = createNavItems(pageSections);
-navBar.appendChild(navContent);
 
 // Add class 'active' to section when near top of viewport
 
@@ -66,6 +62,7 @@ navBar.appendChild(navContent);
 */
 
 // Build menu
+document.addEventListener('DOMContentLoaded', buildNav);
 
 // Scroll to section on link click
 
