@@ -27,6 +27,23 @@ const sections = document.querySelectorAll('section');
  *
 */
 
+// TODO: maybe change these two functions to one switch
+function setActive(elem) {
+  const isActive = elem.classList.contains('your-active-class');
+
+  if (!isActive) {
+    elem.classList.add('your-active-class');
+  }
+}
+
+function deactivate(elem) {
+  const isActive = elem.classList.contains('your-active-class');
+
+  if (isActive) {
+    elem.classList.remove('your-active-class');
+  }
+}
+
 /**
  * End Helper Functions
  * Begin Main Functions
@@ -51,6 +68,20 @@ function buildNav() {
 }
 
 // Add class 'active' to section when near top of viewport
+function checkActive() {
+  const bottomBound = window.innerHeight + navBar.offsetHeight;
+  const topBound = -navBar.offsetHeight;
+
+  for (const section of sections) {
+    const bounding = section.getBoundingClientRect();
+
+    if(bounding.bottom < bottomBound && bounding.top >= topBound){
+      setActive(section);
+    }else{
+      deactivate(section);
+    }
+  }
+}
 
 // Scroll to anchor ID using scrollTO event
 function navClick(evt) {
@@ -73,3 +104,4 @@ document.addEventListener('DOMContentLoaded', buildNav);
 navBar.addEventListener('click', navClick);
 
 // Set sections as active
+document.addEventListener('scroll', checkActive);
