@@ -27,19 +27,12 @@ const sections = document.querySelectorAll('section');
  *
 */
 
-// TODO: maybe change these two functions to one switch
-function setActive(elem) {
+function setActive(elem, active) {
   const isActive = elem.classList.contains('your-active-class');
 
-  if (!isActive) {
+  if (active) {
     elem.classList.add('your-active-class');
-  }
-}
-
-function deactivate(elem) {
-  const isActive = elem.classList.contains('your-active-class');
-
-  if (isActive) {
+  } else {
     elem.classList.remove('your-active-class');
   }
 }
@@ -76,11 +69,17 @@ function checkActive() {
     const bounding = section.getBoundingClientRect();
 
     if(bounding.bottom < bottomBound && bounding.top >= topBound){
-      setActive(section);
+      setActive(section, true);
     }else{
-      deactivate(section);
+      setActive(section, false);
     }
   }
+  //hide the nav bar when scrolling
+  navBar.setAttribute('style', 'display: none');
+  //check to see if user is scrolling and unhide navbar
+  setTimeout(() => {
+    navBar.setAttribute('style', 'display: block');
+  }, 0);
 }
 
 // Scroll to anchor ID using scrollTO event
