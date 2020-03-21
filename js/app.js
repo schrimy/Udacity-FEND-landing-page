@@ -66,6 +66,18 @@ function highlightActiveNav(elem) {
  *
 */
 
+// TODO: Try and actually collapse the height of the landing container too
+//collapse / open section text
+function collapseSection(evt) {
+  const textTarget = evt.target.parentElement.nextElementSibling;
+  //grab the section tag to reduce in height
+  const containerTarget = textTarget.parentElement.parentElement;
+  // TODO: try setting the attribute for height
+  if (evt.target.nodeName.toLowerCase() === 'span') {
+    textTarget.style.cssText = 'display: none';
+  }
+}
+
 // build the nav
 function buildNav() {
   const navFrag = document.createDocumentFragment();
@@ -125,4 +137,6 @@ navBar.addEventListener('click', navClick);
 // Set sections as active
 document.addEventListener('scroll', checkActive);
 
-// TODO: add listener for span tags in main tag to collapse section text
+//listen for click to collapse section
+const mainTag = document.querySelector('main');
+mainTag.addEventListener('click', collapseSection);
