@@ -50,7 +50,7 @@ function hideAndShow() {
 
 function highlightActiveNav(elem) {
   const navItems = document.querySelectorAll('.menu__link');
-  // TODO: see if there is a more succint way
+  // TODO: see if there is a more succint way / check JS style guide
   for (let navItem of navItems) {
     if (navItem.dataset.anchor === elem) {
       navItem.setAttribute('style', 'background: #cc1');
@@ -124,3 +124,5 @@ navBar.addEventListener('click', navClick);
 
 // Set sections as active
 document.addEventListener('scroll', checkActive);
+
+// TODO: add listener for span tags in main tag to collapse section text
