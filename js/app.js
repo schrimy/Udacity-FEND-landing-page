@@ -48,6 +48,18 @@ function hideAndShow() {
   }, 800);
 }
 
+function highlightActiveNav(elem) {
+  const navItems = document.querySelectorAll('.menu__link');
+  // TODO: see if there is a more succint way
+  for (let navItem of navItems) {
+    if (navItem.dataset.anchor === elem) {
+      navItem.setAttribute('style', 'background: #cc1');
+    } else {
+      navItem.removeAttribute('style');
+    }
+  }
+}
+
 /**
  * End Helper Functions
  * Begin Main Functions
@@ -81,10 +93,12 @@ function checkActive() {
 
     if (bounding.bottom < bottomBound && bounding.top >= topBound) {
       setActive(section, true);
+      highlightActiveNav(section.id);
     } else {
       setActive(section, false);
     }
   }
+    //show or hide the nav based on scrolling
     hideAndShow();
 }
 
