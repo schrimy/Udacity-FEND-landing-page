@@ -88,6 +88,16 @@ section {
     transition: ease 0.3s all;
 }
 
+.navbar_hide {
+  opacity: 0;
+  transition: ease 0.2s all;
+}
+
+.navbar_show {
+  opacity: 1;
+  transition: ease 0.2s all;
+}
+
 /* Header Styles */
 .page__header {
     position: fixed;

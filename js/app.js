@@ -37,6 +37,17 @@ function setActive(elem, active) {
   }
 }
 
+function hideAndShow() {
+  //hide the nav bar when scrolling
+  navBar.parentElement.classList.remove('navbar_show');
+  navBar.parentElement.classList.add('navbar_hide');
+  //check to see if user is scrolling and unhide navbar
+  setTimeout(() => {
+    navBar.parentElement.classList.remove('navbar_hide');
+    navBar.parentElement.classList.add('navbar_show');
+  }, 800);
+}
+
 /**
  * End Helper Functions
  * Begin Main Functions
@@ -68,18 +79,13 @@ function checkActive() {
   for (const section of sections) {
     const bounding = section.getBoundingClientRect();
 
-    if(bounding.bottom < bottomBound && bounding.top >= topBound){
+    if (bounding.bottom < bottomBound && bounding.top >= topBound) {
       setActive(section, true);
-    }else{
+    } else {
       setActive(section, false);
     }
   }
-  //hide the nav bar when scrolling
-  navBar.setAttribute('style', 'display: none');
-  //check to see if user is scrolling and unhide navbar
-  setTimeout(() => {
-    navBar.setAttribute('style', 'display: block');
-  }, 0);
+    hideAndShow();
 }
 
 // Scroll to anchor ID using scrollTO event
