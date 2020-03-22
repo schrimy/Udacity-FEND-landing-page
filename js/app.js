@@ -71,7 +71,7 @@ function highlightActiveNav(elem) {
 function collapseSection(evt) {
   const textTarget = evt.target.parentElement.nextElementSibling;
   //grab the section tag to reduce in height
-  const containerTarget = textTarget.parentElement.parentElement;
+  //const containerTarget = textTarget.parentElement.parentElement;
   // TODO: try setting the attribute for height
   if (evt.target.nodeName.toLowerCase() === 'span') {
     textTarget.style.cssText = 'display: none';
@@ -97,13 +97,12 @@ function buildNav() {
 
 // Add class 'active' to section when near top of viewport
 function checkActive() {
-  const bottomBound = window.innerHeight + navBar.offsetHeight;
-  const topBound = -navBar.offsetHeight;
+  const topBound = navBar.offsetHeight;
 
   for (const section of sections) {
     const bounding = section.getBoundingClientRect();
 
-    if (bounding.bottom < bottomBound && bounding.top >= topBound) {
+    if (bounding.bottom > topBound && bounding.top <= topBound) {
       setActive(section, true);
       highlightActiveNav(section.id);
     } else {
@@ -117,8 +116,9 @@ function checkActive() {
 // Scroll to anchor ID using scrollTO event
 function navClick(evt) {
   if (evt.target.nodeName.toLowerCase() === 'li') {
-    const scrollPos = document.getElementById(evt.target.dataset.anchor);
-    scrollPos.scrollIntoView({behavior: 'smooth', block: 'end'});
+    //get elements yPos to scroll to
+    const scrollPos = document.getElementById(evt.target.dataset.anchor).offsetTop;
+    window.scrollTo({top: scrollPos - navBar.offsetHeight, left: 0, behavior: 'smooth'});
   }
 }
 
