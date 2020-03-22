@@ -40,8 +40,11 @@ h2 {
     color: #fff;
 }
 
-h2 span {
+h2 img {
   float: right;
+  height: 50px;
+  width: 50px;
+  display: inline;
 }
 
 p {
@@ -64,7 +67,7 @@ section {
     min-height: 80vh;
 }
 
-.span-left {
+.arrow-left {
   float: left;
 }
 

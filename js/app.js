@@ -28,8 +28,6 @@ const sections = document.querySelectorAll('section');
 */
 
 function setActive(elem, active) {
-  const isActive = elem.classList.contains('your-active-class');
-
   if (active) {
     elem.classList.add('your-active-class');
   } else {
@@ -49,8 +47,9 @@ function hideAndShow() {
 }
 
 function highlightActiveNav(elem) {
+
   const navItems = document.querySelectorAll('.menu__link');
-  
+
   for (let navItem of navItems) {
     if (navItem.dataset.anchor === elem) {
       navItem.setAttribute('style', 'background: #cc1');
@@ -68,12 +67,21 @@ function highlightActiveNav(elem) {
 
 //collapse / open section text
 function collapseSection(evt) {
+  const targetImg = evt.target;
+  //make sure you clicked on the collapse arrow
+  if (targetImg.nodeName.toLowerCase() !== 'img') {
+    return;
+  }
+
+  // TODO: either replace or flip image to 180deg version or toggle class
+  // or try using background image again and swap it's image via css
+
   const textTarget = evt.target.parentElement.nextElementSibling;
   //grab the section tag to reduce in height
   const containerTarget = textTarget.parentElement.parentElement;
   //if section has been collapsed already then open up and display text else
   // collapse and hide text
-  if (evt.target.nodeName.toLowerCase() === 'span' && containerTarget.hasAttribute('style')) {
+  if (containerTarget.hasAttribute('style')) {
     containerTarget.removeAttribute('style');
     textTarget.style.cssText = 'display: block';
   } else {
@@ -84,6 +92,7 @@ function collapseSection(evt) {
 
 // build the nav
 function buildNav() {
+
   const navFrag = document.createDocumentFragment();
 
   for (const section of sections) {
@@ -101,6 +110,7 @@ function buildNav() {
 
 // Add class 'active' to section when near top of viewport
 function checkActive() {
+
   const topBound = navBar.offsetHeight;
 
   for (const section of sections) {
@@ -119,6 +129,7 @@ function checkActive() {
 
 // Scroll to anchor ID using scrollTO event
 function navClick(evt) {
+
   if (evt.target.nodeName.toLowerCase() === 'li') {
     //get elements yPos to scroll to
     const scrollPos = document.getElementById(evt.target.dataset.anchor).offsetTop;
