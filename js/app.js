@@ -50,7 +50,7 @@ function hideAndShow() {
 
 function highlightActiveNav(elem) {
   const navItems = document.querySelectorAll('.menu__link');
-  // TODO: see if there is a more succint way / check JS style guide
+  
   for (let navItem of navItems) {
     if (navItem.dataset.anchor === elem) {
       navItem.setAttribute('style', 'background: #cc1');
@@ -66,15 +66,19 @@ function highlightActiveNav(elem) {
  *
 */
 
-// TODO: Try and actually collapse the height of the landing container too
 //collapse / open section text
 function collapseSection(evt) {
   const textTarget = evt.target.parentElement.nextElementSibling;
   //grab the section tag to reduce in height
-  //const containerTarget = textTarget.parentElement.parentElement;
-  // TODO: try setting the attribute for height
-  if (evt.target.nodeName.toLowerCase() === 'span') {
+  const containerTarget = textTarget.parentElement.parentElement;
+  //if section has been collapsed already then open up and display text else
+  // collapse and hide text
+  if (evt.target.nodeName.toLowerCase() === 'span' && containerTarget.hasAttribute('style')) {
+    containerTarget.removeAttribute('style');
+    textTarget.style.cssText = 'display: block';
+  } else {
     textTarget.style.cssText = 'display: none';
+    containerTarget.setAttribute('style', 'min-height: 20vh');
   }
 }
 
