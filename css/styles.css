@@ -40,14 +40,6 @@ h2 {
     color: #fff;
 }
 
-h2 img {
-  float: right;
-  height: 50px;
-  width: 50px;
-  display: inline;
-  cursor: pointer;
-}
-
 p {
     line-height: 1.6em;
     color: #eee;
@@ -66,6 +58,25 @@ main {
 section {
     position: relative;
     min-height: 80vh;
+}
+
+.collapse-arrow {
+  display: block;
+  float: right;
+  width: 50px;
+  height: 50px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  cursor: pointer;
+}
+
+.open-section {
+  background-image: url('../images/open-arrow.png');
+}
+
+.close-section {
+  background-image: url('../images/collapse-arrow.png');
 }
 
 .arrow-left {

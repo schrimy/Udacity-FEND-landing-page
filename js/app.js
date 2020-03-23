@@ -47,7 +47,6 @@ function hideAndShow() {
 }
 
 function highlightActiveNav(elem) {
-
   const navItems = document.querySelectorAll('.menu__link');
 
   for (let navItem of navItems) {
@@ -68,18 +67,17 @@ function highlightActiveNav(elem) {
 //collapse / open section text
 function collapseSection(evt) {
   const targetImg = evt.target;
-  const textTarget = evt.target.parentElement.nextElementSibling;
-  //grab the section tag to reduce in height
-  const containerTarget = textTarget.parentElement.parentElement;
-  
   //make sure you clicked on the collapse arrow
-  if (targetImg.nodeName.toLowerCase() !== 'img') {
+  if (!targetImg.classList.contains('collapse-arrow')) {
     return;
   }
 
-  // TODO: either replace or flip image to 180deg version or toggle class
-  // or try using background image again and swap it's image via css
-
+  const textTarget = evt.target.parentElement.nextElementSibling;
+  //grab the section tag to reduce in height
+  const containerTarget = textTarget.parentElement.parentElement;
+  //change collapse image via css when clicked
+  targetImg.classList.toggle('open-section');
+  targetImg.classList.toggle('close-section');
   //if section has been collapsed already then open up and display text else
   // collapse and hide text
   if (containerTarget.hasAttribute('style')) {
@@ -93,7 +91,6 @@ function collapseSection(evt) {
 
 // build the nav
 function buildNav() {
-
   const navFrag = document.createDocumentFragment();
 
   for (const section of sections) {
@@ -111,7 +108,6 @@ function buildNav() {
 
 // Add class 'active' to section when near top of viewport
 function checkActive() {
-
   const topBound = navBar.offsetHeight;
 
   for (const section of sections) {
@@ -130,7 +126,6 @@ function checkActive() {
 
 // Scroll to anchor ID using scrollTO event
 function navClick(evt) {
-
   if (evt.target.nodeName.toLowerCase() === 'li') {
     //get elements yPos to scroll to
     const scrollPos = document.getElementById(evt.target.dataset.anchor).offsetTop;
