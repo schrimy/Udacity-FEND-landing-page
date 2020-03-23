@@ -58,6 +58,14 @@ function highlightActiveNav(elem) {
   }
 }
 
+function deActivateAll() {
+  const navItems = document.querySelectorAll('.menu__link');
+
+  navItems.forEach((elem) => {
+    elem.removeAttribute('style');
+  });
+}
+
 /**
  * End Helper Functions
  * Begin Main Functions
@@ -109,6 +117,7 @@ function buildNav() {
 // Add class 'active' to section when near top of viewport
 function checkActive() {
   const topBound = navBar.offsetHeight;
+  let numOfHits = 0;
 
   for (const section of sections) {
     const bounding = section.getBoundingClientRect();
@@ -116,12 +125,17 @@ function checkActive() {
     if (bounding.bottom > topBound && bounding.top <= topBound) {
       setActive(section, true);
       highlightActiveNav(section.id);
+      numOfHits++;
     } else {
       setActive(section, false);
     }
   }
-    //show or hide the nav based on scrolling
-    hideAndShow();
+
+  if (numOfHits === 0) {
+    deActivateAll();
+  }
+  //show or hide the nav based on scrolling
+  hideAndShow();
 }
 
 // Scroll to anchor ID using scrollTO event
