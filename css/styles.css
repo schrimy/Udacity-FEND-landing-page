@@ -45,6 +45,7 @@ h2 img {
   height: 50px;
   width: 50px;
   display: inline;
+  cursor: pointer;
 }
 
 p {

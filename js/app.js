@@ -68,6 +68,10 @@ function highlightActiveNav(elem) {
 //collapse / open section text
 function collapseSection(evt) {
   const targetImg = evt.target;
+  const textTarget = evt.target.parentElement.nextElementSibling;
+  //grab the section tag to reduce in height
+  const containerTarget = textTarget.parentElement.parentElement;
+  
   //make sure you clicked on the collapse arrow
   if (targetImg.nodeName.toLowerCase() !== 'img') {
     return;
@@ -76,9 +80,6 @@ function collapseSection(evt) {
   // TODO: either replace or flip image to 180deg version or toggle class
   // or try using background image again and swap it's image via css
 
-  const textTarget = evt.target.parentElement.nextElementSibling;
-  //grab the section tag to reduce in height
-  const containerTarget = textTarget.parentElement.parentElement;
   //if section has been collapsed already then open up and display text else
   // collapse and hide text
   if (containerTarget.hasAttribute('style')) {
