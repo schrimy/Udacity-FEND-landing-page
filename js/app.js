@@ -151,8 +151,8 @@ function checkActive() {
 // Scroll to anchor ID using scrollTO event
 function navClick(evt) {
   if (evt.target.nodeName.toLowerCase() === 'li') {
-    //get elements yPos to scroll to
-    const scrollPos = document.getElementById(evt.target.dataset.anchor).offsetTop;
+    //get elements yPos to scroll to, '+ 1' is for chrome phone browser to make sure section bound hits
+    const scrollPos = document.getElementById(evt.target.dataset.anchor).offsetTop + 1;
     window.scrollTo({top: scrollPos - navBar.offsetHeight, left: 0, behavior: 'smooth'});
   }
 }
