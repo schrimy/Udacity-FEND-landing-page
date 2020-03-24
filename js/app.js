@@ -28,6 +28,7 @@ const scrollToTop = document.querySelector('.to-top');
  *
 */
 
+//helper function to add or remove active class for a passed section element
 function setActive(elem, active) {
   if (active) {
     elem.classList.add('your-active-class');
@@ -36,6 +37,7 @@ function setActive(elem, active) {
   }
 }
 
+// helper to hide or show the nav / back to top when scrolling
 function hideAndShow() {
   //hide the nav bar when scrolling
   navBar.parentElement.classList.remove('navbar_show');
@@ -54,6 +56,7 @@ function hideAndShow() {
   }
 }
 
+// helper to re-style the nav items if active or not
 function highlightActiveNav(elem) {
   const navItems = document.querySelectorAll('.menu__link');
 
@@ -66,6 +69,8 @@ function highlightActiveNav(elem) {
   }
 }
 
+// helper which makes sure all active styling is removed from nav if no
+//section is active
 function deActivateAll() {
   const navItems = document.querySelectorAll('.menu__link');
 
@@ -126,11 +131,9 @@ function buildNav() {
 function checkActive() {
   const topBound = navBar.offsetHeight;
   let numOfHits = 0;
-
+  //checks each section bounding to see if it's the one being viewed = active section
   for (const section of sections) {
     const bounding = section.getBoundingClientRect();
-
-    // TODO: if have to have 1st section active when open = make last staement deafult and add statement on top if section is 1 and make bounding top >=?
 
     if (bounding.bottom > topBound && bounding.top <= topBound) {
       setActive(section, true);
@@ -140,7 +143,7 @@ function checkActive() {
       setActive(section, false);
     }
   }
-
+  //if no section is active turn off any active state for the nav
   if (numOfHits === 0) {
     deActivateAll();
   }
@@ -151,7 +154,8 @@ function checkActive() {
 // Scroll to anchor ID using scrollTO event
 function navClick(evt) {
   if (evt.target.nodeName.toLowerCase() === 'li') {
-    //get elements yPos to scroll to, '+ 1' is for chrome phone browser to make sure section bound hits
+    //get elements yPos to scroll to, '+ 1' is for chrome phone browser to make
+    //sure section bound hits
     const scrollPos = document.getElementById(evt.target.dataset.anchor).offsetTop + 1;
     window.scrollTo({top: scrollPos - navBar.offsetHeight, left: 0, behavior: 'smooth'});
   }

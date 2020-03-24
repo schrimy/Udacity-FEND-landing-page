@@ -3,11 +3,48 @@
 ## Table of Contents
 
 * [Instructions](#instructions)
+* [Resources](#resources)
+* [Goals](#goals)
+* [Challenges](#challenges)
+* [Notes-for-reviewer](#notes-for-reviewer)
 
 ## Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+To open the project just double click or 'open with' index.html file. Keep the
+project file structure the same.
 
-To get started, open `js/app.js` and start building out the app's functionality
+Click the arrows on each section to collapse and open them.
 
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+## Resources
+
+[MDN](https://developer.mozilla.org/en-US/)
+[stack overflow](https://stackoverflow.com/)
+
+## Goals
+
+- To produce a fully working landing page with the required feature, for every
+screen size required
+- To implement all the extra suggested feature:
+..* Active state to navigation list items
+..* Hide navigation when scrolling the page
+..* Add scroll to top button after going past fold of page
+..* Make section collapsible
+..* Update the design
+- To write code as efficiently as I can
+- To gain better understanding of JavaScript
+
+## Challenges
+
+- Finding the best way to represent the and build the collapse symbols, either
+image tag, span tag, background image
+- Took a few goes at understanding where I can use ES6 arrow functions, still
+not completely sure I have used them to the full extent?
+- finding an issue with the nav click -> scroll to section, where it didn't
+fully scroll for middle sections by one pixel. Only in chrome for mobile. Which
+resulted in a small 'hack' to resolve.
+
+## Notes-for-reviewer
+
+If you could pay particular attention to the `js/app.js` file and recommend any
+better ways of doing things, e.g. written and ordering the function, for loops
+etc.
