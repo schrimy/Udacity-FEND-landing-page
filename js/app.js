@@ -20,6 +20,7 @@
 
 const navBar = document.querySelector('#navbar__list');
 const sections = document.querySelectorAll('section');
+const scrollToTop = document.querySelector('.to-top');
 
 /**
  * End Global Variables
@@ -44,6 +45,13 @@ function hideAndShow() {
     navBar.parentElement.classList.remove('navbar_hide');
     navBar.parentElement.classList.add('navbar_show');
   }, 800);
+
+  //show or hide scroll to top button
+  if (window.scrollY > (document.body.clientHeight)/4) {
+    scrollToTop.setAttribute('style', 'display: block');
+  } else {
+    scrollToTop.removeAttribute('style');
+  }
 }
 
 function highlightActiveNav(elem) {
@@ -122,6 +130,8 @@ function checkActive() {
   for (const section of sections) {
     const bounding = section.getBoundingClientRect();
 
+    // TODO: if have to have 1st section active when open = make last staement deafult and add statement on top if section is 1 and make bounding top >=?
+
     if (bounding.bottom > topBound && bounding.top <= topBound) {
       setActive(section, true);
       highlightActiveNav(section.id);
@@ -163,5 +173,9 @@ navBar.addEventListener('click', navClick);
 document.addEventListener('scroll', checkActive);
 
 //listen for click to collapse section
-const mainTag = document.querySelector('main');
-mainTag.addEventListener('click', collapseSection);
+document.querySelector('main').addEventListener('click', collapseSection);
+
+//set up scroll to top button
+scrollToTop.addEventListener('click', () => {
+  window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+});

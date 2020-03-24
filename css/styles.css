@@ -23,7 +23,7 @@ body {
 h1 {
     font-family: 'Fira Sans', sans-serif;
     font-size: 3em;
-    margin: 2em 1rem;
+    margin: 5em 1rem 1em;
 }
 
 @media only screen and (min-width: 35em){
@@ -121,6 +121,14 @@ section {
 .navbar_show {
   opacity: 1;
   transition: ease 0.2s all;
+}
+
+.to-top {
+  display: none;
+  position: absolute;
+  padding: 20px 0 0 20px;
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 /* Header Styles */

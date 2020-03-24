@@ -14,6 +14,7 @@
   IDs are only used for sections to connect menu achors to sections -->
   <header class="page__header">
     <nav class="navbar__menu">
+      <div class="to-top">Back to top</div>
       <!-- Navigation starts as empty UL that will be populated with JS -->
       <ul id="navbar__list"></ul>
     </nav>
@@ -24,9 +25,8 @@
     </header>
     <!-- Each Section has an ID (used for the anchor) and
     a data attribute that will populate the li node.
-    Adding more sections will automatically populate nav.
-    The first section is set to active class by default -->
-    <section id="section1" data-nav="Section 1" class="your-active-class">
+    Adding more sections will automatically populate nav. -->
+    <section id="section1" data-nav="Section 1">
       <div class="landing__container">
         <h2>Section 1 <div class="collapse-arrow close-section"></div></h2>
         <div>
