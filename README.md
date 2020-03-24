@@ -18,6 +18,7 @@ Click the arrows on each section to collapse and open them.
 ## Resources
 
 [MDN](https://developer.mozilla.org/en-US/)
+
 [stack overflow](https://stackoverflow.com/)
 
 ## Goals
