@@ -22,16 +22,16 @@ Click the arrows on each section to collapse and open them.
 
 ## Goals
 
-- To produce a fully working landing page with the required feature, for every
+1. To produce a fully working landing page with the required feature, for every
 screen size required
-- To implement all the extra suggested feature:
-..* Active state to navigation list items
-..* Hide navigation when scrolling the page
-..* Add scroll to top button after going past fold of page
-..* Make section collapsible
-..* Update the design
-- To write code as efficiently as I can
-- To gain better understanding of JavaScript
+2. To implement all the extra suggested feature:
+  ..* Active state to navigation list items
+  ..* Hide navigation when scrolling the page
+  ..* Add scroll to top button after going past fold of page
+  ..* Make sections collapsible
+  ..* Update the design
+3. To write code as efficiently as I can
+4. To gain better understanding of JavaScript
 
 ## Challenges
 
