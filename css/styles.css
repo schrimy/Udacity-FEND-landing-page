@@ -87,6 +87,31 @@ section {
 /* ---- Module Rules ---- */
 
 /* Navigation Styles*/
+nav {
+    display: flex;
+    flex-direction: row;
+    background: rgba(0, 0, 0, 0.4);
+    justify-content: space-around;
+    font-size: 0.7em;
+}
+
+@media only screen and (min-width: 35em) {
+    nav {
+        font-size: 1em;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    nav {
+        justify-content: flex-end;
+    }
+}
+
+#navbar__list {
+    display: flex;
+    flex-direction: row;
+}
+
 .navbar__menu ul {
     padding-left: 0;
     margin: 0;
@@ -98,12 +123,18 @@ section {
 }
 
 .navbar__menu .menu__link {
-    background: rgba(0, 0, 0, 0.4);
     display: block;
     padding: 1em;
     font-weight: bold;
     text-decoration: none;
     color: #fff;
+    text-align: center;
+}
+
+@media only screen and (min-width: 35em) {
+    .navbar__menu .menu__link {
+        text-align: left;
+    }
 }
 
 .navbar__menu .menu__link:hover {
@@ -125,10 +156,10 @@ section {
 
 .to-top {
   display: none;
-  position: absolute;
-  padding: 20px 0 0 20px;
+  padding: 1em;
   cursor: pointer;
   text-decoration: underline;
+  margin-right: auto;
 }
 
 /* Header Styles */
